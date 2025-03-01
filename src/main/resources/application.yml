@@ -19,7 +19,7 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: true
+          lower-case-service-id: true  # Asegura que usa nombres en minúsculas
       routes:
         - id: ms-books-catalogue
           uri: lb://ms-books-catalogue
@@ -38,7 +38,10 @@ spring:
           '[/**]':
             allowed-origins: "*"
             allowed-methods:
+              - GET
               - POST
+              - PUT
+              - DELETE
             allowed-headers: "*"
             allow-credentials: true
 
