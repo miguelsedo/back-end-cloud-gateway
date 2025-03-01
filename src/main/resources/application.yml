@@ -22,7 +22,7 @@ spring:
           lower-case-service-id: true
       routes:
         - id: ms-books-catalogue
-          uri: https://ms-books-catalogue-production.up.railway.app
+          uri: http://ms-books-catalogue.spring-cloud-gateway.railway.internal:8080
           predicates:
             - Path=/ms-books-catalogue/**
           filters:
