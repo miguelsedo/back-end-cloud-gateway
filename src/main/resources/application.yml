@@ -1,9 +1,6 @@
 server:
   port: ${PORT:8762}
 
-  server:
-  port: ${PORT:8762}
-  
 eureka:
   instance:
     prefer-ip-address: true
@@ -13,11 +10,11 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_URL:http://eureka-service:8761/eureka}
-      
+
 spring:
   application:
     name: gateway-acl
-cloud:
+  cloud:
     gateway:
       discovery:
         locator:
@@ -25,9 +22,9 @@ cloud:
           lower-case-service-id: true
       routes:
         - id: ms-books-catalogue
-          uri: https://ms-books-catalogue-production.up.railway.app
+          uri: http://ms-books-catalogue.spring-cloud-gateway.railway.internal:8080
           predicates:
-            - Path=/api/libros/**
+            - Path=/ms-books-catalogue/**
           filters:
             - StripPrefix=1
         - id: ms-books-payments
