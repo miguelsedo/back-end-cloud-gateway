@@ -32,7 +32,7 @@ spring:
           predicates:
             - Path=/ms-books-payments/**
           filters:
-            - StripPrefix=1
+            - RewritePath=/ms-books-payments/(?<remaining>.*), /$\{remaining}
       globalcors:
         cors-configurations:
           '[/**]':
