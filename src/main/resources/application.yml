@@ -19,16 +19,16 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: true  # Asegura que usa nombres en minúsculas
+          lower-case-service-id: false  # Ahora usa nombres tal como están en Eureka
       routes:
-        - id: ms-books-catalogue
-          uri: lb://ms-books-catalogue
+        - id: MS-BOOKS-CATALOGUE  # Ahora coincide con el nombre en Eureka
+          uri: lb://MS-BOOKS-CATALOGUE
           predicates:
             - Path=/ms-books-catalogue/**
           filters:
             - StripPrefix=1
-        - id: ms-books-payments
-          uri: lb://ms-books-payments
+        - id: MS-BOOKS-PAYMENTS  # Asegurar que coincide con el nombre en Eureka
+          uri: lb://MS-BOOKS-PAYMENTS
           predicates:
             - Path=/ms-books-payments/**
           filters:
