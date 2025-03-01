@@ -9,7 +9,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URL:http://eureka-service:8761/eureka}
 
 spring:
   application:
@@ -19,16 +19,16 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: false  # Ahora usa nombres tal como están en Eureka
+          lower-case-service-id: true
       routes:
-        - id: MS-BOOKS-CATALOGUE  # Ahora coincide con el nombre en Eureka
-          uri: lb://MS-BOOKS-CATALOGUE
+        - id: ms-books-catalogue
+          uri: lb://ms-books-catalogue
           predicates:
             - Path=/ms-books-catalogue/**
           filters:
             - StripPrefix=1
-        - id: MS-BOOKS-PAYMENTS  # Asegurar que coincide con el nombre en Eureka
-          uri: lb://MS-BOOKS-PAYMENTS
+        - id: ms-books-payments
+          uri: lb://ms-books-payments
           predicates:
             - Path=/ms-books-payments/**
           filters:
